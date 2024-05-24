@@ -1,0 +1,61 @@
+{% extends 'app_pages\basemain.html' %}
+
+{% block 'main' %}
+{% load static %}
+<!--Start Main of index-->
+      
+<div class="row flex-row justify-content-center mt-5">
+    <!--column 1-->
+    <div class="col-md-5 ms-3 shadow rounded flex-row justify-content-center bg-custom">
+      <h3>Notes</h3>
+      <div>
+        <a href="/notes"><button type="submit" class="btn  ml-1" style="background-color:darkslateblue; color:white">Add New</button></a>
+        </div>
+      
+      <div class="pb-2 mt-1 bg-custom">
+        <div class="card bg-custom">
+          <div class="card-body bg-custom">
+            <div class="d-flex flex-row align-items-center bg-custom">
+              
+              <div style="width:275px;">
+                <!--input group append hides the calendor table-->
+                  {% for x in notes %}
+                    <a style="text-decoration: none;color:darkblue;" href="/viewnotes/{{x.id}}">{{x.title}}</a>&nbsp;&nbsp;<a class="text-end" href="/deletenote/{{x.id}}"><i class="bi bi-trash-fill text-white "></i></a><br>
+                  
+                 {% endfor %}
+              </div>
+             
+                          
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+
+
+    <!--column 2-->
+    <div class="col-md-6 ms-3 bg-custom ">
+     <!--tabs-->
+     
+      {% if vieworadd == True %}
+      {% for x in select %}
+      <form action="\updatenotes\{{x.id}}" method="get">
+      <input class="mt-2" style="height:50px; width:500px" type="text" name="Title" value="{{x.title}}"><br>
+      <textarea style="height:300px; width:500px" name="notes" >{{x.note}}</textarea><br>
+      <button type="submit" class="btn mb-2" style="background-color:darkslateblue; color:white">update notes</button>
+     </form>
+      {% endfor %}
+      {% else %}
+      <form action="\addnotes" method="get">
+      <input class="mt-2" style="height:50px; width:500px" type="text" name="Title" placeholder="Title"><br>
+      <textarea style="height:300px; width:500px" name="notes" placeholder="Type your notes here...."></textarea><br>
+      <button type="submit" class="btn  mb-2" style="background-color:darkslateblue; color:white">Add new notes</button>
+      </form>
+      {% endif %}
+     
+    </div>
+</div>
+  
+   <!--End Main of index-->
+{% endblock 'main' %}

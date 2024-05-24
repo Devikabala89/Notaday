@@ -1,0 +1,66 @@
+{% extends 'app_pages\basemain.html' %}
+
+{% block 'main' %}
+{% load static %}
+<!--Start Main of merchandise-->
+      
+<div class="row mt-3" style="color: #AB1919;">
+    <!--col 1/filter section-->
+    <div class="col-md-4  bg-custom">
+        <h3>Filter by products</h3>
+        <form action="\shop" method="get">
+          {% for x in filcat %}
+        <input type="checkbox" id="{{x.category}}" name="options" value="{{x.category}}" {{checked}} >
+        <label for="{{x.category}}">{{x.category}}</label><br>
+          {% endfor %}
+        
+        
+
+        <h3 class="mt-4">Filter by price</h3>
+        <label for="customRange2" class="form-label">Range</label>
+        <input  type="range" class="form-range" min="150" max="1500" name="pricerange" id="customRange2" oninput="rangevalue.innerText = this.value"><p id="rangevalue" name="price">{{pri}}</p>
+       
+
+        <h3 class="mt-4">Sort by Price</h3>
+        <input type="radio"  id="sortprice" name="sortprice" value="1" {{option1}}> Low to High <br>
+        <input type="radio" id="sortprice" name="sortprice" value="0" {{option2}}> High to Low<br>
+        <button type="submit">Filter</button>
+        <button type="reset" value="Reset"><a href="/shop" style="text-decoration: none;color: black;">Reset</a></button>
+      </form>
+    </div>
+    <!--col 2/cards section-->
+    <div class="col-md-8">
+      <div class="d-flex justify-content-end"  style="color: wheat;"><h3><span class="badge rounded-pill text-bg-warning me-2">Products</span></h3>
+        <a href="/cart"><h3><span class="badge rounded-pill text-bg-warning me-2">Cart</span></h3></a> 
+        <a href="/orderhistory"><h3><span class="badge rounded-pill text-bg-warning ">Order history</span></h3></a></div>
+      <!--Row 1-->
+      <div class="row mt-3">
+        <!--card 1-->
+        {% for x in products %}
+        <div class="col-md-4">
+          <div class="card mt-2" style="width:90%;">
+            <img src="{{x.pimage.url}}" height="200px" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{x.name}}&nbsp;&nbsp;</h5>
+              <p class="card-text">{{x.price}}</p>
+              <p class="card-text">{{x.category}}</p>
+              <a href="/details_product/{{x.id}}" class="btn btn-danger">See details</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        <!--card 2-->
+        
+    </div>
+    </div>
+</div>
+<script>
+  function redirec(url){
+    window.location.href=url;
+  }
+</script>
+  
+   <!--End Main of merchandise-->
+
+
+{% endblock 'main' %}

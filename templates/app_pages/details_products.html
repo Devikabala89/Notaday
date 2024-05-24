@@ -1,0 +1,31 @@
+{% extends 'app_pages\basemain.html' %}
+{% block 'main' %}
+{% load static %}
+<!--Start Main of product_details-->
+<div class="row mt-5 mx-auto text-white">
+  {% for x in products %}
+    <div class="col-md-6 mt-5">
+      <img src="{{x.pimage.url}}" width="75%">
+    </div>
+    <div class="col-md-6 mt-5">
+      <p><b>Product Name:</b>&nbsp;&nbsp;&nbsp;{{x.name}}</p>
+      <p><b>Price:</b>&nbsp;&nbsp;&nbsp;{{x.price}}</p>
+      <p><b>Category:</b>&nbsp;&nbsp;&nbsp;{{x.category}}</p>
+      <p><b>Product Details:</b>&nbsp;&nbsp;&nbsp;{{x.pdetails}}</p>
+      <br>
+      <a href="/addtocart/{{x.id}}" class="btn btn-danger">Add to cart</a>&nbsp;&nbsp;
+      <a href="/cart" class="btn btn-danger">View cart</a>&nbsp;&nbsp;
+      <a href="/shop" class="btn btn-danger">Shop More</a>
+      {% if msg %}
+                <div class="alert alert-success mt-2">{{msg}}</div>
+                {% endif %}
+    </div>
+    {% endfor %}
+    
+  </div>
+  
+    
+  
+  
+   <!--End Main of product_details-->
+   {% endblock 'main' %}

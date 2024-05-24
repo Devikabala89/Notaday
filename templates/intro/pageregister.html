@@ -1,0 +1,37 @@
+{% extends 'intro\base1.html' %}
+
+{% block 'main' %}
+{% load static %}
+<!--Start Main of register-->
+<div class="row">
+    <div class="col-5"></div>
+    <div class="col-5 shadow mt-1 p-4 mx-auto" style="color:white">
+        <h2 class="text-center">Register</h2>
+
+            <form action="/register/" method="POST">
+                {% csrf_token %}
+                {% if data %}
+                <div class="alert alert-danger">{{data}}</div>
+                {% endif %}
+                <div class="mb-3">
+                    <label for="input1" class="fom-label">Username:</label>
+                    <input type="email" name="uname" class="form-control" id="input1" placeholder="Enter username/email"> 
+                </div>
+                <div class="mb-3">
+                    <label for="input2" class="fom-label">Password:</label>
+                    <input type="password" name="upass" class="form-control" id="input2" placeholder="Enter password"> 
+                </div>
+                <div class="mb-3">
+                    <label for="input2" class="fom-label">Confirm Password:</label>
+                    <input type="password" name="ucpass" class="form-control" id="input3" placeholder="Re-enter password"> 
+                </div>
+                <div class="mb-3">
+                    <input type="submit" class="btn btn-danger" style="color:white" value="Register">
+                    <br>Registered user??? <button class="btn btn-sm btn-danger" type="button"><a style="text-decoration:none; color:white" href="/login"> Login Now! </a></button>
+                </div>
+            </form>
+    </div>
+  </div>
+   <!--End Main of register-->
+
+{% endblock 'main' %}

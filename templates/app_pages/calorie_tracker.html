@@ -1,0 +1,90 @@
+{% extends 'app_pages\basemain.html' %}
+
+{% block 'main' %}
+
+{% load static %}
+ <!--Start Main of calorie_tracker-->
+      
+ <div class="row mt-5">
+    <!--column 1 adding task input field-->
+    <div class="col-md-4 ms-3 shadow rounded" style="background-image: linear-gradient(to bottom right, rgba(9, 9, 90, 0.242), silver); color:white">
+      <h3>Count your calories today by using this tracker!!!</h3>
+      <form method="post">
+        {% csrf_token %}
+                <!--calender box-->
+                <div class="d-flex flex-row align-items-center">
+                <div class="input-group date d-flex flex-row align-items-center"  id="datepicker">
+                    <input type="text" name="date" class="form-control" placeholder="Select the date!!!">
+                   <span class="input-group-append"> <!--input group append hides the calendor table-->
+                        <span class="input-group-text bg-white  d-block">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                        
+                    </span>
+                </div>
+                    <div>
+                    <input type="number" class="form-control input-group-append"  id="exampleFormControlInput1"
+                            name="goal"    placeholder="Calorie goal">
+                    </div>
+                    
+                    </div><br>
+
+                    <select name="cat" id="cate">
+                        <option value="Breakfast">Breakfast</option>
+                        <option value="snacks">Snacks</option>
+                        <option value="Lunch">Lunch</option>
+                        <option value="Dinner">dinner</option>
+                      </select><br>
+                      <div>
+                            <input type="text" class="form-control mt-3"  id="exampleFormControlInput1"
+                              name="food"  placeholder="Food taken">
+                            <input type="number" class="form-control mt-3"  id="exampleFormControlInput1"
+                              name="cal"  placeholder="It's calories">
+                      </div>
+
+              <div class="mt-4 mb-3">
+                <button type="submit" class="btn " style="background-color: darkblue; color: whitesmoke;">Add</button>
+                </div>
+            </form>
+                          
+            
+    </div>
+    <!--column 2 display field-->
+    <div class="col-md-6">
+     <!--tabs-->
+     <div class="row">
+     <div class="col-md-9">
+        <p style="color:white">{{now}}/{{aim}} kcal consumed for the day <span class="badge badge-danger">{{on_load}}</span></p>
+        <div class="progress" role="progressbar" aria-label="Danger example" aria-valuenow="{{percent}}" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar " style="width: {{percent}}%; background-color:darkblue;"></div>
+          </div>
+     </div>
+     <div class="col-md-3">
+
+      <select onchange="location = this.value;">
+            <option value="date">select date</option>
+                            
+            {% for x in date %}
+            
+            <option value="/loadfood/{{x.date}}">{{x.date}}</option>
+          
+            {% endfor %}
+        </select>
+     </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12 ms-3 me-3 d-flex justify-content-between">
+      {% for x in food %}
+         <div class="alert " style="width:150px; background-color: rgba(1, 1, 121, 0.509);color:whitesmoke;"><h4>{{x.cat}}</h4><br>{{x.food}}<br>{{x.intake}}</div>
+      
+      {% endfor %}
+    </div>
+    </div>
+        
+
+    </div>
+  </div>
+  
+  
+   <!--End Main of calorie_tracker-->
+{% endblock 'main' %}

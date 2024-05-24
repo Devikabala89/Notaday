@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOTADAY</title>
+    <link rel="Stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body>
+    <!--Start header of index pages-->
+    <nav class="navbar bg-body-rgb navbar-expand-lg container-fluid justify-content-end" style="color:white">
+     
+        <i>Notaday</i>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" >
+          <span class="navbar-toggler-icon" ></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end"  id="navbarNav">
+          <ul class="navbar-nav">
+            
+            <li class="nav-item">
+              <a class="nav-link"  href="/features">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"   href="/about">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/contactUs">Contact</a>
+            </li>
+            <li><button class="btn btn-sm btn-danger me-2" type="button"><a style="text-decoration:none; color:white" href="/login">Login</a></button></li>
+          <li><button class="btn btn-sm btn-danger" type="button"><a style="text-decoration:none; color:white" href="/register"> Signup</a></button></li>
+          </ul>
+        </div>
+      
+          
+         
+    </nav>
+
+     
+      <!--End header of index pages-->

@@ -1,0 +1,27 @@
+{% extends 'intro\base1.html' %}
+
+{% block 'main' %}
+{% load static %}
+<!--Start Main of intro-->
+<div class="row mt-4">
+    <div class="col-4"></div>
+    <div class="col-7" style="height: 340px;">
+        <!--Carousel 5 seconds auto slide-->
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" >
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{% static 'assets/images/carousel1.png' %}" class="d-block w-100 "  style="height: 360px;" alt="carousel1">
+              </div>
+              <div class="carousel-item">
+                <img src="{% static 'assets/images/carousel2.png' %}" class="d-block w-100" style="height: 360px;" alt="carousel2">
+              </div>
+              <div class="carousel-item">
+                <img src="{% static 'assets/images/carousel3.png' %}" class="d-block w-100"  style="height: 360px;" alt="carousel3">
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>
+   <!--End Main of intro-->
+
+{% endblock 'main' %}

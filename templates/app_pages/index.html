@@ -1,0 +1,111 @@
+{% extends 'app_pages\basemain.html' %}
+
+{% block 'main' %}
+{% load static %}
+<!--Start Main of index-->
+      
+<div class="row flex-row justify-content-center mt-3">
+    <!--column 1-->
+    <div class="col-md-6 ms-3 shadow rounded flex-row justify-content-center" style="background-image: linear-gradient(to bottom right, rgba(9, 9, 90, 0.242), silver); color:white">
+      <h3>Docket</h3>
+      <form action="\addtask" method="get">
+      <div class="pb-2 bg-body-rgb">
+        <div class="card bg-body-rgb">
+          <div class="card-body bg-body-rgb">
+            <div class="d-flex flex-row align-items-center bg-body-rgb">
+              <input type="text" class="form-control " name="inputtask" id="exampleFormControlInput1"
+                placeholder="Add new...">
+                <div class="input-group date"  id="datepicker">
+                  <input type="text" name="inputdate" placeholder="Complete by" class="form-control">
+                 <span class="input-group-append"> <!--input group append hides the calendor table-->
+                      <span class="input-group-text bg-white  d-block">
+                          <i class="fa fa-calendar"></i>
+                      </span>
+                  </span>
+                  
+              </div>
+              <div style="width:75px;height:37.33px">
+                <span class="input-group-append"> <!--input group append hides the calendor table-->
+                  
+                    <select style="width:75px;height:37.33px" name="imp" id="imp">
+                      <option value="High">High</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Low">Low</option>
+                      </select>
+                  
+              </span>
+                
+              </div>
+              <div>
+                <button type="submit" class="btn  ml-1" style="background-color:rgba(1, 1, 60, 0.658); color:white">Add</button>
+                </div>
+                          
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    </div>
+</div>
+<div class="row flex-row justify-content-center">
+    <!--column 2-->
+    <div class="col-md-6 ms-3 mt-4 " style="background-image: linear-gradient(to bottom right, rgba(9, 9, 90, 0.242), silver);">
+     <!--tabs-->
+     <nav>
+      <div class="nav nav-tabs "  id="nav-tab" role="tablist">
+        <button class="nav-link active " style="background-color:rgba(1, 1, 60, 0.658) "  id="nav-all-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">All</button>
+        <button class="nav-link " style="background-color:rgba(1, 1, 60, 0.658)" id="nav-act-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Active</button>
+        <button class="nav-link " style="background-color:rgba(1, 1, 60, 0.658)" id="nav-complete-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Completed</button>
+      </div>
+    </nav>
+    <div class="tab-content text-white" id="nav-tabContent">
+      <div class="tab-pane fade show active "  id="nav-home" role="tabpanel" aria-labelledby="nav-all-tab">
+        {% for x in data %}
+        {% if x.status == "completed" %}
+        <div class="d-flex justify-content-between">
+        
+        <s>&#9635{{x.task}} <span class="badge rounded-pill" style="background-color:darksalmon;">{{x.date}}</span><span class="badge rounded-pill text-bg-primary">{{x.importance}}</span></s><i>
+       <a class="text-end" href="/taskcomplete/{{x.id}}"><i class="bi bi-check-circle text-white"></i></a>&nbsp;&nbsp;
+       <a class="text-end" href="/deletetask/{{x.id}}"><i class="bi bi-trash-fill text-white "></i></a></i></div>
+      {% else %}
+      <div class="d-flex justify-content-between">
+        <span>&#9634
+        {{x.task}} <span class="badge rounded-pill " style="background-color:darksalmon;">{{x.date}}</span><span class="badge rounded-pill text-bg-primary">{{x.importance}}</span></span><i>
+          <a class="text-end" href="/taskcomplete/{{x.id}}"><i class="bi bi-check-circle text-white"></i></a>&nbsp;&nbsp;
+          <a class="text-end" href="/deletetask/{{x.id}}"><i class="bi bi-trash-fill text-white "></i></a></i></div>
+
+        {% endif %}
+        {% endfor %}<!--s tag strikes the line-->
+      </div>
+      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-act-tab">
+        {% for x in data %}
+        {% if x.status == "Incomplete" %}
+        <div class="d-flex justify-content-between">
+        
+        <span>&#9634{{x.task}} <span class="badge rounded-pill" style="background-color:darksalmon;">{{x.date}}</span><span class="badge rounded-pill text-bg-primary">{{x.importance}}</span></span><i>
+       <a class="text-end" href="/taskcomplete/{{x.id}}"><i class="bi bi-check-circle text-white"></i></a>&nbsp;&nbsp;
+       <a class="text-end" href="/deletetask/{{x.id}}"><i class="bi bi-trash-fill text-white "></i></a></i></div>
+      
+        {% endif %}
+        {% endfor %}
+      </div>
+      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-complete-tab">
+        {% for x in data %}
+        {% if x.status == "completed" %}
+        <div class="d-flex justify-content-between">
+        
+        <s>&#9635{{x.task}} <span class="badge rounded-pill" style="background-color:darksalmon;">{{x.date}}</span><span class="badge rounded-pill text-bg-primary">{{x.importance}}</span></s><i>
+       <a class="text-end" href="/taskcomplete/{{x.id}}"><i class="bi bi-check-circle text-white"></i></a>&nbsp;&nbsp;
+       <a class="text-end" href="/deletetask/{{x.id}}"><i class="bi bi-trash-fill text-white "></i></a></i></div>
+      
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    </div>
+  </div>
+  
+  
+   <!--End Main of index-->
+{% endblock 'main' %}

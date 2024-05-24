@@ -1,0 +1,52 @@
+{% extends 'intro\base1.html' %}
+
+{% block 'main' %}
+{% load static %}
+<!--Start Main of contact Us-->
+<div class="row mt-3 p-3">
+    <div class="col-4 shadow rounded mt-5 p-4 mx-auto bg-body-rgb" style="color:white">
+        <h3>Contact Us</h3>
+        <h5>Address</h5>
+        <hr>
+        No.###, <br> 
+        Outer Ring Road, 1st Phase,<br>
+        Madhavaram,<br>
+        Chennai, <br>
+        TamilNadu. <br>
+        Mailto: xxyyzz@gmail.com<br>
+        Contact: +91 93333999000222
+    </div>
+    <div class="col-6 shadow mt-3 p-4 mx-auto" style="color:white">
+        <h3>Contact NotaDay!</h3>
+        {% if data %}
+        <div class="alert alert-success">{{data}}</div>
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="input1" class="fom-label">Name:</label>
+                <input type="text" name="qname" class="form-control" id="input1" placeholder="Enter Name"> 
+            </div>
+            <div class="mb-3">
+                <label for="input2" class="fom-label">Email:</label>
+                <input type="email" name="qmail" class="form-control" id="input2" placeholder="Enter email"> 
+            </div>
+            <div class="mb-3">
+                <label for="input3" class="fom-label">Phone:</label>
+                <input type="number" name="qphone" class="form-control" id="input3" placeholder="Enter phone number"> 
+            </div>
+            <div class="mb-3">
+                <label for="input4" class="fom-label">Message:</label>
+                <textarea name="utext" class="form-control" id="input4" >Type here!!!</textarea>
+            </div>
+            <div class="mb-3">
+                <input type="submit" class="btn btn-danger" style="color:white" value="Submit">
+                
+               
+            </div>
+        </form>
+    </div>
+  </div>
+   <!--End Main of contact Us-->
+
+{% endblock 'main' %}

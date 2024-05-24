@@ -1,0 +1,11 @@
+{% extends 'app_pages\basemain.html' %}
+
+{% block 'main' %}
+{% load static %}
+<div class="alert alert-danger">
+    Hurray! Your order has been placed successfully!!!
+    <button class="btn btn-danger"><a href="/shop" style="text-decoration: none;color: white;">shop more!!!</a></button>
+    <button class="btn btn-danger"><a href="/orderhistory" style="text-decoration: none;color: white;">Order History</a></button>
+
+</div>
+{% endblock 'main' %}
