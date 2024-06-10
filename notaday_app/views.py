@@ -272,7 +272,7 @@ def makepayment(request):
         s = s + (x.pid.price*x.qty)
         oid=x.order_id
     np=len(orders)
-    client = razorpay.Client(auth=("rzp_test_yxGbtOjgEaNrUy", "2tO3u3mESWF1ixC7P6tUmobi"))
+    client = razorpay.Client(auth=("razorpay secret key", "secret password"))
 
     data = { "amount": s*100, "currency": "INR", "receipt": oid }
     payment = client.order.create(data=data)
