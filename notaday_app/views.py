@@ -339,7 +339,14 @@ def loadfood(request,pid):
 
         return render(request,'app_pages\calorie_tracker.html',context)
     else:
-        date=datetime.datetime.strptime(pid,'%b %d, %Y')
+        temp=pid.split(' ')
+        #print(temp)
+        #print((temp[0])[0:3])
+        #print(temp[1])
+        #print(temp[2])
+        finaldate=(temp[0])[0:3]+" "+temp[1]+" "+temp[2]
+        #print(finaldate)
+        date=datetime.datetime.strptime(finaldate,'%b %d, %Y')
         formatDate=date.strftime("%Y-%m-%d")
         c1=Q(date=formatDate)
         c2=Q(uid=request.user.id)
