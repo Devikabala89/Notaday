@@ -351,6 +351,7 @@ def loadfood(request,pid):
         c1=Q(date=formatDate)
         c2=Q(uid=request.user.id)
         d=Calorietracker.objects.filter(c1 & c2)
+        
         print(d)
         totalintake=0
         for x in d:
